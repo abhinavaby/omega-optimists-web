@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Omega Optimists</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Contact Page Specific Styles */
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px 0;
+        }
+
+        .contact-header h1 {
+            font-size: 3.5rem;
+            color: #dda0dd;
+            text-shadow: 0 0 20px rgba(138, 43, 226, 0.8), 2px 2px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 15px;
+            font-weight: 700;
+            animation: fadeInDown 0.8s ease-out, glowPulse 3s ease-in-out infinite;
+        }
+
+        .contact-header .subtitle {
+            font-size: 1.3rem;
+            color: #ba55d3;
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+            font-weight: 300;
+            animation: fadeInUp 0.8s ease-out 0.2s both, float 3s ease-in-out infinite 1s;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            justify-items: center;
+            padding: 20px 0;
+        }
+
+        .member-box {
+            position: relative;
+            height: 220px;
+            width: 220px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 4px solid rgba(138, 43, 226, 0.4);
+            background: rgba(26, 10, 46, 0.6);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 1s ease-out both, bounceIn 1.2s ease-out both;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .member-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(138, 43, 226, 0.2), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 4s infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .member-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(186, 85, 211, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .member-box:hover {
+            transform: translateY(-15px) scale(1.05);
+            border-color: rgba(221, 160, 221, 0.8);
+            box-shadow: 0 20px 50px rgba(138, 43, 226, 0.6), 0 0 40px rgba(186, 85, 211, 0.4);
+        }
+
+        .member-box:hover::before {
+            animation: shimmer 1s infinite;
+        }
+
+        .member-box:hover::after {
+            opacity: 1;
+        }
+
+        .member-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            position: relative;
+            z-index: 0;
+        }
+
+        .member-box:hover img {
+            transform: scale(1.1);
+        }
+
+        .member-box:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .member-box:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .member-box:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .member-box:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .member-box:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .member-box:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .member-box:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .member-box:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .member-box:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(138, 43, 226, 0.8), 2px 2px 10px rgba(0, 0, 0, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(138, 43, 226, 1), 0 0 40px rgba(186, 85, 211, 0.6), 2px 2px 10px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(50px) rotate(-10deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1) translateY(-10px) rotate(5deg);
+            }
+            70% {
+                transform: scale(0.95) translateY(5px) rotate(-2deg);
+            }
+            100% {
+                transform: scale(1) translateY(0) rotate(0deg);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        /* Background animated particles */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(186, 85, 211, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(221, 160, 221, 0.05) 0%, transparent 50%);
+            animation: backgroundMove 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes backgroundMove {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+            66% {
+                transform: translate(-30px, 30px) scale(0.9);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-container {
+                padding: 20px 15px;
+            }
+
+            .contact-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-header .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .members-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 20px;
+            }
+
+            .member-box {
+                height: 180px;
+                width: 180px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-header .subtitle {
+                font-size: 1rem;
+            }
+
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .member-box {
+                height: 150px;
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="l">Omega Optimists</div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="https://abhinavaby.github.io/img-uploader/">Gallery</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="contact-container">
+        <div class="contact-header">
+            <h1>Connect With Us</h1>
+            <p class="subtitle">Follow our members on Instagram</p>
+        </div>
+
+        <div class="members-grid">
+            <a href="https://www.instagram.com/mathew_sbstn?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="member-box">
+                <img src="IMG_5260.jpg" alt="Member 1">
+            </a>
+            <a href="https://www.instagram.com/abel_jo5e?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="member-box">
+                <img src="IMG_5263.jpg" alt="Member 2">
+            </a>
+            <a href="https://www.instagram.com/abel_jones_2007?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="member-box">
+                <img src="IMG_5264.jpg" alt="Member 3">
+            </a>
+            <a href="https://www.instagram.com/steve_j._stephen?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="member-box">
+                <img src="sdds.jpeg" alt="Member 4">
+            </a>
+            <div class="member-box">
+                <img src="gsf.jpeg" alt="Member 5">
+            </div>
+            <a href="https://www.instagram.com/adwaith_gireesh_06?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="member-box">
+                <img src="IMG_5266.jpg" alt="Member 6">
+            </a>
+            <a href="https://www.instagram.com/devaduth_s_nair?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="member-box">
+                <img src="asdwe.jpeg" alt="Member 7">
+            </a>
+            <a href="https://www.instagram.com/cyril_p_jose/?utm_source=ig_web_button_share_sheet" class="member-box">
+                <img src="abtt.jpeg" alt="Member 8">
+            <a href="https://www.instagram.com/abhinav_aby_01/" class="member-box">
+                <img src="IMG20251015153036 2.JPG" alt="Member 9">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

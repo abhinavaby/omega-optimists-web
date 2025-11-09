@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Omega Optimists</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* About Page Specific Styles */
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px 0;
+        }
+
+        .about-header h1 {
+            font-size: 3.5rem;
+            color: #dda0dd;
+            text-shadow: 0 0 20px rgba(138, 43, 226, 0.8), 2px 2px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 15px;
+            font-weight: 700;
+            animation: fadeInDown 0.8s ease-out, glowPulse 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .about-header .subtitle {
+            font-size: 1.3rem;
+            color: #ba55d3;
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+            font-weight: 300;
+            animation: fadeInUp 0.8s ease-out 0.2s both, float 3s ease-in-out infinite 1s;
+        }
+
+        .content-section {
+            background: rgba(26, 10, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+            animation: fadeInUp 1s ease-out 0.3s both, slideInScale 1.2s ease-out 0.5s both;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(138, 43, 226, 0.05), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 4s infinite;
+            pointer-events: none;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            border-color: rgba(221, 160, 221, 0.5);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.3);
+        }
+
+        .content-section:hover::before {
+            animation: shimmer 2s infinite;
+        }
+
+        .content-section h2 {
+            color: #dda0dd;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+            border-bottom: 2px solid rgba(138, 43, 226, 0.5);
+            padding-bottom: 10px;
+            position: relative;
+            animation: slideInLeft 0.8s ease-out 0.6s both;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #8a2be2, #ba55d3);
+            animation: expandLine 1s ease-out 1s forwards;
+        }
+
+        .content-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+            animation: fadeInText 1s ease-out both;
+            position: relative;
+        }
+
+        .content-section p:nth-of-type(1) {
+            animation-delay: 0.8s;
+        }
+
+        .content-section p:nth-of-type(2) {
+            animation-delay: 1s;
+        }
+
+        .content-section p:nth-of-type(3) {
+            animation-delay: 1.2s;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .mission-card {
+            background: rgba(138, 43, 226, 0.1);
+            border: 2px solid rgba(138, 43, 226, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 1s ease-out both, bounceIn 1.2s ease-out both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .mission-card:nth-child(1) {
+            animation-delay: 0.4s;
+        }
+
+        .mission-card:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .mission-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(221, 160, 221, 0.8);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.5), 0 0 30px rgba(186, 85, 211, 0.3);
+            background: rgba(138, 43, 226, 0.2);
+        }
+
+        .mission-card:hover::before {
+            left: 100%;
+        }
+
+        .mission-card:hover h3 {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+        }
+
+        .mission-card h3 {
+            color: #ba55d3;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .mission-card p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            margin: 0;
+            text-align: left;
+        }
+
+        .highlight-text {
+            color: #dda0dd;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+            position: relative;
+            display: inline-block;
+            animation: highlightGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes highlightGlow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(138, 43, 226, 0.8), 0 0 30px rgba(186, 85, 211, 0.6);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(138, 43, 226, 0.8), 2px 2px 10px rgba(0, 0, 0, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(138, 43, 226, 1), 0 0 40px rgba(186, 85, 211, 0.6), 2px 2px 10px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes slideInScale {
+            from {
+                opacity: 0;
+                transform: translateX(-30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes expandLine {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(50px);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05) translateY(-10px);
+            }
+            70% {
+                transform: scale(0.9) translateY(5px);
+            }
+            100% {
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        /* Background animated particles */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(186, 85, 211, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(221, 160, 221, 0.05) 0%, transparent 50%);
+            animation: backgroundMove 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes backgroundMove {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+            66% {
+                transform: translate(-30px, 30px) scale(0.9);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-container {
+                padding: 20px 15px;
+            }
+
+            .about-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-header .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .content-section {
+                padding: 25px 20px;
+                border-radius: 15px;
+            }
+
+            .content-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .content-section p {
+                font-size: 1rem;
+                text-align: left;
+            }
+
+            .mission-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .mission-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-header h1 {
+                font-size: 2rem;
+            }
+
+            .about-header .subtitle {
+                font-size: 1rem;
+            }
+
+            .content-section {
+                padding: 20px 15px;
+            }
+
+            .content-section h2 {
+                font-size: 1.4rem;
+            }
+
+            .mission-card h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="l">Omega Optimists</div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="https://abhinavaby.github.io/img-uploader/">Gallery</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="about-container">
+        <div class="about-header">
+            <h1>About Omega Optimists</h1>
+            <p class="subtitle">A Circle of Nine Friends Bound by Optimism</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Our Story</h2>
+            <p>
+                Bound by a shared philosophy, a close-knit circle of nine friends adopted the moniker 
+                <span class="highlight-text">"Omega Optimists,"</span> a name reflecting their collective belief in ultimate, 
+                positive outcomes. Their group dynamic is a blend of diverse personalities: a natural leader, 
+                a pragmatist, a tech enthusiast, an empathetic soul, an adventurer, a strategic mind, a 
+                creative spirit, a steady presence, and a resilient individual.
+            </p>
+            <p>
+                Regardless of whether they are tackling professional challenges, personal setbacks, or simply 
+                navigating daily life, the group operates on the principle that <span class="highlight-text">every obstacle 
+                is an opportunity for growth</span>. Their combined resilience and hopeful outlook ensure that they 
+                consistently find silver linings and support each other through thick and thin.
+            </p>
+            <p>
+                This shared optimism is the cornerstone of their friendship, driving them to face the world 
+                with an unwavering belief that their unified positive energy will lead to successful and 
+                fulfilling results.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>Our Mission</h2>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <h3>Community Impact</h3>
+                    <p>We are a group of individuals dedicated to making a positive impact in our community and beyond.</p>
+                </div>
+                <div class="mission-card">
+                    <h3>Inspire & Empower</h3>
+                    <p>Our mission is to inspire and empower others to join us in our efforts to create meaningful change.</p>
+                </div>
+                <div class="mission-card">
+                    <h3>Collaboration</h3>
+                    <p>We believe in the power of collaboration and the importance of giving back to those around us.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

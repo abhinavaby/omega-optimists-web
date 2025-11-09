@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omega Optimists - Members</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="l">Omega Optimists</div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="https://abhinavaby.github.io/img-uploader/">Gallery</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header">
+        <h2 class="fade-in">Omega Optimists Members</h2>
+        <p class="fade-in-delay">Meet our amazing team</p>
+    </div>
+
+    <div class="wrapper">
+        <div class="item item1">
+            <div class="image-container">
+                <img src="sdds.jpeg" alt="Member 1">
+                <div class="image-overlay">
+                    <p>Member 1</p>
+                </div>
+            </div>
+        </div>
+        <div class="item item2">
+            <div class="image-container">
+                <img src="IMG20251015153036 2.JPG" alt="Member 2">
+                <div class="image-overlay">
+                    <p>Member 2</p>
+                </div>
+            </div>
+        </div>
+        <div class="item item3">
+            <div class="image-container">
+                <img src="IMG_5266.jpg" alt="Member 3">
+                <div class="image-overlay">
+                    <p>Member 3</p>
+                </div>
+            </div>
+        </div>
+        <div class="item item4">
+            <div class="image-container">
+                <img src="IMG_5264.jpg" alt="Member 4">
+                <div class="image-overlay">
+                    <p>Member 4</p>
+                </div>
+            </div>
+        </div>
+        <div class="item item5">
+            <div class="image-container">
+                <img src="IMG_5260.jpg" alt="Member 5">
+                <div class="image-overlay">
+                    <p>Member 5</p>
+                </div>
+            </div>
+        </div>
+        <div class="item item6">
+            <div class="image-container">
+                <img src="gsf.jpeg" alt="Member 6">
+                <div class="image-overlay">
+                    <p>Member 6</p>
+                </div>
+            </div>
+        </div>
+        <div class="item item7">
+            <div class="image-container">
+                <img src="abtt.jpeg" alt="Member 7">
+                <div class="image-overlay">
+                    <p>Member 7</p>
+                </div>
+            </div>
+        </div>
+        <div class="item item8">
+            <div class="image-container">
+                <img src="IMG_5263.jpg" alt="Member 8">
+                <div class="image-overlay">
+                    <p>Member 8</p>
+                </div>
+            </div>
+        </div>
+        <div class="item item9">
+            <div class="image-container">
+                <img src="asdwe.jpeg" alt="Member 9">
+                <div class="image-overlay">
+                    <p>Member 9</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

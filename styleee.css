@@ -1,0 +1,57 @@
+body{
+    background-color: black;
+    color: white;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #7d25db;
+    margin-left: 20px;
+}
+p{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.navbar ul {
+    list-style-type: none; /* Removes the bullet points */
+    margin: 0; /* Resets default browser margin */
+    padding: 0; /* Resets default browser padding */
+    overflow: hidden; /* Ensures all content is contained */
+    background-color: #333; /* Dark background color */
+}
+.navbar li {
+    float: inline-end; /* Makes list items float next to each other horizontally */
+}
+
+.navbar li a {
+    display: block;
+    /* Makes the whole link area clickable and allows padding */
+    color: rgb(113, 27, 242); /* White text color */
+    text-align: center; /* Centers the text */
+    padding: 14px 16px; /* Adds spacing around the links */
+    text-decoration: none; /* Removes the default underline from links */
+}
+#l{
+   float: left;
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 27px;
+    padding-top: 6px;
+    padding-left: 10px;
+}
+
+/* Change the background color of links on hover */
+.navbar li a:hover {
+    background-color: #000000;
+    color: rgb(154, 37, 244);
+}
+
+/* Adds a highlight to the active/current link */
+.navbar li a.active {
+    background-color: #000000;
+    color: rgb(109, 27, 223);
+}
